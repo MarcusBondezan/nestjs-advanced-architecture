@@ -1,0 +1,2 @@
+## Value Objects
+Originates from domain driven design DDD. A value object is an immutable object that represents a descriptive aspect of the domain with no conceptual identity. Two value objects are equal when they have the same value, not necessarily being the same object. Value objects should be immutable and side effect free.
