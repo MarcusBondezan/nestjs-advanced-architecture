@@ -3,12 +3,25 @@ import { Injectable } from "@nestjs/common";
 
 import { Alarm } from "../alarm";
 import { AlarmSeverity } from "../alarm-severity";
+import { AlarmItem } from "../alarm-item";
 
 @Injectable()
 export class AlarmFactory {
-  create(name:string, severity: string) {
+  create(
+    name:string, 
+    severity: string,
+    triggeredAt: Date,
+    items: Array<{ name: string; type: string; }>
+  ) {
     const alarmId = randomUUID();
-    const alarmSeverity = new AlarmSeverity(severity as AlarmSeverity['value']);
-    return new Alarm(alarmId, name, alarmSeverity);
+
+    const alarm = new Alarm(alarmId);
+    alarm.name = name;
+    alarm.severity = new AlarmSeverity(severity as AlarmSeverity['value']);
+    alarm.triggeredAt = triggeredAt;
+    
+    items.forEach((item) => alarm.addAlarmItem(new AlarmItem(randomUUID(), item.name, item.type)));
+
+    return alarm;
   }
 }
