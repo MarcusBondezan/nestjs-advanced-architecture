@@ -3,7 +3,7 @@ export class AlarmReadModel {
   name: string;
   severity: string;
   triggeredAt: Date;
-  isAcknowledge: boolean;
+  isAcknowledged: boolean;
   items: Array<{
     name: string;
     type: string;

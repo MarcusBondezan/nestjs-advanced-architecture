@@ -15,7 +15,7 @@ export class MaterializedAlarmView {
   triggeredAt: Date;
 
   @Prop()
-  isAcknowledge: boolean;
+  isAcknowledged: boolean;
 
   @Prop(
     raw([
