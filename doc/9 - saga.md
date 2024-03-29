@@ -1,0 +1,7 @@
+# Sagas
+
+A Saga is a pattern used to manage and coordinate the execution of long running business processes or distributed transactions. A saga can be thought of as a process, or a workflow that orchestrates the execution of multiple Commands and Events across different aggregates or services. It ensures that the entire sequence of actions either succeeds or fails "as a whole", preserving the integrity of the data. In Event-driven systems sagas are typically implemented as a state machine that reacts to events and issues commands to other aggregates or services.
+
+Since the NestJS/CQRS package uses RxJS to control the flow of events, we can use the powerful RxJS operators to combined, buffer, and coordinate events emitted by different aggregates or services. Sagas can also represent processes that span multiple steps and might take a significant amount of time to complete. For example:
+
+A saga could be used to implement a multi-step onboarding process for new users. Each step of the process would be represented by a Command and an Event. The Saga would react to these events and issue the next Command in the sequence. The Saga would even be responsible for handling timeouts and failures, ensuring that the entire process either succeeds ot fails as a whole. This is why it's important that the state of a saga needs to be persisted in a database, allowing it to survive system failures and restarts.
